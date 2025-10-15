@@ -1,42 +1,19 @@
 using System;
-using DesafioPOO.Models;
 
-class Program
+namespace DesafioPOO.Models
 {
-    static void Main(string[] args)
+    // TODO: Herdar da classe "Smartphone"
+    public class Nokia : Smartphone
     {
-        Console.WriteLine("=====================================");
-        Console.WriteLine(" Testes POO - Abstração de Celulares ");
-        Console.WriteLine("=====================================");
-        
-        // --- TESTES NOKIA ---
-        Console.WriteLine("\n--- Teste Nokia ---");
-        Nokia nokia = new Nokia(
-            numero: "9988-7766",
-            modelo: "Nokia 3310",
-            imei: "111222333444555",
-            memoria: 64
-        );
-        
-        nokia.ExibirInformacoes(); 
-        nokia.Ligar();            
-        nokia.InstalarAplicativo("Snake Game"); 
+        // Construtor que repassa todos os parâmetros para o construtor da classe base
+        public Nokia(string numero, string modelo, string imei, int memoria) : base(numero, modelo, imei, memoria)
+        {
+        }
 
-        // --- TESTES IPHONE ---
-        Console.WriteLine("\n--- Teste iPhone ---");
-        Iphone iphone = new Iphone(
-            numero: "9123-4567",
-            modelo: "iPhone 15 Pro",
-            imei: "666777888999000",
-            memoria: 256
-        );
-
-        iphone.ExibirInformacoes(); 
-        iphone.ReceberLigacao();    
-        iphone.InstalarAplicativo("iMovie"); 
-
-        Console.WriteLine("\n=====================================");
-        Console.WriteLine(" Testes Concluídos! ");
-        Console.WriteLine("=====================================");
+        // TODO: Sobrescrever o método "InstalarAplicativo"
+        public override void InstalarAplicativo(string nomeApp)
+        {
+            Console.WriteLine($"Nokia: Instalando \"{nomeApp}\" via Microsoft Store...");
+        }
     }
 }
