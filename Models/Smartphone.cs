@@ -1,26 +1,48 @@
-namespace DesafioPOO.Models
+using System;
+using DesafioPOO.Models;
+
+// TODO: Realizar os testes com as classes Nokia e Iphone (substituído pela lógica abaixo)
+
+class Program
 {
-    public abstract class Smartphone
+    static void Main(string[] args)
     {
-        public string Numero { get; set; }
-        // TODO: Implementar as propriedades faltantes de acordo com o diagrama
+        Console.WriteLine("=====================================");
+        Console.WriteLine(" Testes POO - Abstração de Celulares ");
+        Console.WriteLine("=====================================");
+        
+        // --- TESTES NOKIA ---
+        Console.WriteLine("\n--- Teste Nokia ---");
+        // Cria uma instância de Nokia
+        Nokia nokia = new Nokia(
+            numero: "9988-7766",
+            modelo: "Nokia 3310",
+            imei: "111222333444555",
+            memoria: 64
+        );
+        
+        // Chama os métodos herdados e o polimórfico
+        nokia.ExibirInformacoes(); 
+        nokia.Ligar();            
+        nokia.InstalarAplicativo("Snake Game"); 
 
-        public Smartphone(string numero)
-        {
-            Numero = numero;
-            // TODO: Passar os parâmetros do construtor para as propriedades
-        }
+        // --- TESTES IPHONE ---
+        Console.WriteLine("\n--- Teste iPhone ---");
+        // Cria uma instância de Iphone
+        Iphone iphone = new Iphone(
+            numero: "9123-4567",
+            modelo: "iPhone 15 Pro",
+            imei: "666777888999000",
+            memoria: 256
+        );
 
-        public void Ligar()
-        {
-            Console.WriteLine("Ligando...");
-        }
+        // Chama os métodos herdados e o polimórfico
+        iphone.ExibirInformacoes(); 
+        iphone.ReceberLigacao();    
+        iphone.InstalarAplicativo("iMovie"); 
 
-        public void ReceberLigacao()
-        {
-            Console.WriteLine("Recebendo ligação...");
-        }
-
-        public abstract void InstalarAplicativo(string nomeApp);
+        Console.WriteLine("\n=====================================");
+        Console.WriteLine(" Testes Concluídos! ");
+        Console.WriteLine("=====================================");
     }
 }
