@@ -1,48 +1,50 @@
 using System;
-using DesafioPOO.Models;
 
-// TODO: Realizar os testes com as classes Nokia e Iphone (substituído pela lógica abaixo)
-
-class Program
+namespace DesafioPOO.Models
 {
-    static void Main(string[] args)
+    public abstract class Smartphone
     {
-        Console.WriteLine("=====================================");
-        Console.WriteLine(" Testes POO - Abstração de Celulares ");
-        Console.WriteLine("=====================================");
-        
-        // --- TESTES NOKIA ---
-        Console.WriteLine("\n--- Teste Nokia ---");
-        // Cria uma instância de Nokia
-        Nokia nokia = new Nokia(
-            numero: "9988-7766",
-            modelo: "Nokia 3310",
-            imei: "111222333444555",
-            memoria: 64
-        );
-        
-        // Chama os métodos herdados e o polimórfico
-        nokia.ExibirInformacoes(); 
-        nokia.Ligar();            
-        nokia.InstalarAplicativo("Snake Game"); 
+        public string Numero { get; set; }
+        // TODO: Implementar as propriedades faltantes de acordo com o diagrama
+        private string Modelo { get; set; }
+        private string Imei { get; set; }
+        private int Memoria { get; set; }
 
-        // --- TESTES IPHONE ---
-        Console.WriteLine("\n--- Teste iPhone ---");
-        // Cria uma instância de Iphone
-        Iphone iphone = new Iphone(
-            numero: "9123-4567",
-            modelo: "iPhone 15 Pro",
-            imei: "666777888999000",
-            memoria: 256
-        );
+        // Construtor completo para que as classes filhas possam inicializar todas as propriedades
+        public Smartphone(string numero, string modelo, string imei, int memoria)
+        {
+            Numero = numero;
+            // TODO: Passar os parâmetros do construtor para as propriedades
+            Modelo = modelo;
+            Imei = imei;
+            Memoria = memoria;
+        }
 
-        // Chama os métodos herdados e o polimórfico
-        iphone.ExibirInformacoes(); 
-        iphone.ReceberLigacao();    
-        iphone.InstalarAplicativo("iMovie"); 
+        // Construtor original com apenas 'numero' (mantido caso o projeto o exija, mas o acima é usado pelas classes filhas)
+        public Smartphone(string numero)
+        {
+             Numero = numero;
+        }
 
-        Console.WriteLine("\n=====================================");
-        Console.WriteLine(" Testes Concluídos! ");
-        Console.WriteLine("=====================================");
+        public void Ligar()
+        {
+            Console.WriteLine("Ligando...");
+        }
+
+        public void ReceberLigacao()
+        {
+            Console.WriteLine("Recebendo ligação...");
+        }
+
+        public abstract void InstalarAplicativo(string nomeApp);
+
+        // Método auxiliar para testes (adicionado para exibir as informações)
+        public void ExibirInformacoes()
+        {
+            Console.WriteLine($"Modelo: {Modelo}");
+            Console.WriteLine($"Número: {Numero}");
+            Console.WriteLine($"IMEI: {Imei}");
+            Console.WriteLine($"Memória: {Memoria}GB");
+        }
     }
 }
